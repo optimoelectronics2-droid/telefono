@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Catálogo — Trifusion Technologies</title>
+<title>Trifusion Technologies — Catálogo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -18,7 +18,7 @@
     }
 
     body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: system-ui, Arial, sans-serif;
         background: radial-gradient(circle at top, #172239 0, #050712 55%, #02030a 100%);
         margin: 0;
         color: var(--text);
@@ -26,12 +26,12 @@
 
     header {
         padding: 18px 16px;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-        backdrop-filter: blur(16px);
-        background: linear-gradient(120deg, rgba(0,0,0,0.4), rgba(9,15,32,0.95));
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        background: rgba(0,0,0,0.6);
+        backdrop-filter: blur(10px);
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 50;
     }
 
     .header-inner{
@@ -39,89 +39,54 @@
         margin: 0 auto;
         display:flex;
         justify-content: space-between;
-        align-items: center;
-        gap:12px;
+        align-items:center;
     }
 
-    .logo-title{
-        display:flex;
-        flex-direction:column;
-        gap:4px;
-    }
-
-    .logo-title h1 {
-        margin: 0;
-        font-size: 22px;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-    }
-
-    .logo-title span{
-        font-size: 12px;
-        color: var(--muted);
+    .logo-title h1{
+        margin:0;
+        font-size:22px;
+        letter-spacing:0.03em;
     }
 
     .header-contact{
-        text-align:right;
         font-size:12px;
-        color:var(--muted);
-    }
-
-    .header-contact strong{
-        color:var(--accent);
+        color: var(--muted);
+        text-align:right;
     }
 
     /* Toolbar */
-
     .toolbar{
         max-width:1100px;
         margin:18px auto 0;
         padding:0 16px 4px;
         display:grid;
-        grid-template-columns: minmax(0,2fr) minmax(0,1.5fr);
+        grid-template-columns:minmax(0,2fr) minmax(0,1fr);
         gap:12px;
     }
 
-    @media (max-width:780px){
+    @media(max-width:800px){
         .toolbar{
-            grid-template-columns: minmax(0,1fr);
-        }
-        .header-inner{
-            flex-direction:column;
-            align-items:flex-start;
-        }
-        .header-contact{
-            text-align:left;
+            grid-template-columns:1fr;
         }
     }
 
     .panel{
         background:rgba(8,12,26,0.9);
         border-radius:14px;
-        padding:10px 12px 12px;
-        border:1px solid rgba(255,255,255,0.06);
-        box-shadow:0 14px 40px rgba(0,0,0,0.45);
+        padding:10px;
+        border:1px solid rgba(255,255,255,0.05);
     }
 
     .panel-title{
         font-size:13px;
-        text-transform:uppercase;
-        letter-spacing:0.12em;
+        margin-bottom:6px;
         color:var(--muted);
-        margin-bottom:8px;
-    }
-
-    .field-row{
-        display:flex;
-        gap:8px;
-        align-items:center;
-    }
-
-    .field-row input[type="text"]{
-        flex:1;
+        text-transform:uppercase;
+        letter-spacing:0.1em;
     }
 
     input[type="text"], input[type="number"]{
+        width:100%;
         background:#050815;
         border-radius:10px;
         border:1px solid rgba(255,255,255,0.08);
@@ -131,325 +96,162 @@
         outline:none;
     }
 
-    input[type="text"]:focus,
-    input[type="number"]:focus{
-        border-color:var(--accent);
-        box-shadow:0 0 0 1px rgba(0,194,255,0.4);
-    }
-
     button{
         border:none;
-        border-radius:999px;
-        padding:8px 14px;
-        font-size:13px;
+        border-radius:10px;
+        padding:8px 15px;
+        font-size:14px;
         font-weight:600;
-        letter-spacing:0.04em;
-        text-transform:uppercase;
+        letter-spacing:0.03em;
         cursor:pointer;
-        background:linear-gradient(135deg,var(--accent),#4df1ff);
+        background:linear-gradient(135deg,var(--accent),#62e3ff);
         color:#02030a;
-        box-shadow:0 8px 22px rgba(0,194,255,0.35);
-        display:inline-flex;
-        align-items:center;
-        gap:6px;
+        box-shadow:0 6px 18px rgba(0,194,255,0.35);
         white-space:nowrap;
     }
 
-    button.secondary{
-        background:transparent;
-        color:var(--accent);
-        border:1px solid rgba(0,194,255,0.6);
-        box-shadow:none;
-    }
-
-    .admin-status{
-        margin-top:6px;
-        font-size:12px;
-        color:var(--muted);
-    }
-
-    .admin-status span.on{
-        color:#4cff9a;
-    }
-    .admin-status span.off{
-        color:var(--danger);
-    }
-
-    /* Catalog */
-
+    /* Catálogo */
     .catalogo-wrapper{
         max-width:1100px;
-        margin:8px auto 30px;
-        padding:0 16px 20px;
+        margin:20px auto 40px;
+        padding:0 16px;
     }
 
     .catalogo{
         display:flex;
         flex-direction:column;
         gap:12px;
-        margin-top:10px;
     }
 
     .producto{
-        position:relative;
-        background: radial-gradient(circle at top left, rgba(0,194,255,0.18), transparent 55%),
-                    radial-gradient(circle at bottom right, rgba(76,255,154,0.09), transparent 50%),
-                    var(--card);
-        border-radius:16px;
-        padding:14px 16px;
+        background:var(--card);
+        border-radius:14px;
+        padding:14px;
         border:1px solid var(--card-border);
-        box-shadow:0 18px 40px rgba(0,0,0,0.6);
+        box-shadow:0 14px 30px rgba(0,0,0,0.35);
         display:flex;
         justify-content:space-between;
         align-items:flex-start;
-        gap:16px;
-        overflow:hidden;
-    }
-
-    .producto::before{
-        content:"";
-        position:absolute;
-        inset:0;
-        border-radius:16px;
-        border:1px solid rgba(255,255,255,0.04);
-        pointer-events:none;
-        mix-blend-mode:screen;
-    }
-
-    .producto-left{
-        flex:1;
-        min-width:0;
+        gap:15px;
     }
 
     .descripcion{
         font-size:16px;
         color:var(--accent);
         font-weight:600;
-        white-space:normal;
         word-break:break-word;
-        margin-bottom:4px;
-    }
-
-    .meta{
-        font-size:12px;
-        color:var(--muted);
+        flex:1;
     }
 
     .producto-right{
         display:flex;
         flex-direction:column;
         align-items:flex-end;
+        min-width:160px;
         gap:6px;
-        min-width:170px;
     }
 
     .precio{
         font-size:20px;
         font-weight:700;
-        color:var(--danger);
         white-space:nowrap;
-        text-shadow:0 0 10px rgba(255,75,106,0.45);
+        color:var(--danger);
     }
 
     .precio.transito{
         color:#ffc14b;
-        text-shadow:0 0 10px rgba(255,193,75,0.45);
-    }
-
-    .precio-base{
-        font-size:12px;
-        color:var(--muted);
+        text-shadow:0 0 6px rgba(255,193,75,0.45);
     }
 
     .editor-precio{
         display:flex;
         gap:6px;
         align-items:center;
-        margin-top:4px;
     }
 
     .editor-precio label{
-        font-size:11px;
-        color:var(--muted);
+        display:none;
     }
 
-    .editor-precio input[type="number"]{
-        width:90px;
-        font-size:13px;
-        padding-inline:6px;
-    }
-
-    .badge-admin{
-        font-size:10px;
-        padding:2px 6px;
-        border-radius:999px;
-        border:1px solid rgba(0,194,255,0.7);
-        color:var(--accent);
-        text-transform:uppercase;
-        letter-spacing:0.08em;
-    }
-
-    .empty{
+    #mensajeVacio{
         text-align:center;
-        margin-top:20px;
+        margin-top:15px;
         color:var(--muted);
-        font-size:14px;
-    }
-
-    /* Panel imágenes */
-
-    .imagenes-panel{
-        max-width:1100px;
-        margin:0 auto 40px;
-        padding:0 16px 20px;
-    }
-
-    .iframe-box{
-        margin-top:10px;
-        background:rgba(4,7,18,0.95);
-        border-radius:14px;
-        border:1px solid rgba(255,255,255,0.06);
-        overflow:hidden;
-    }
-
-    .iframe-box iframe{
-        width:100%;
-        height:360px;
-        border:none;
-        background:#000;
-    }
-
-    .links-busqueda{
-        display:flex;
-        flex-wrap:wrap;
-        gap:8px;
-        margin-top:8px;
-        font-size:12px;
-    }
-
-    .links-busqueda a{
-        color:var(--accent);
-        text-decoration:none;
-        padding:4px 10px;
-        border-radius:999px;
-        border:1px solid rgba(0,194,255,0.5);
-    }
-
-    .links-busqueda a:hover{
-        background:var(--accent-soft);
     }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo-title">
-      <h1>Trifusion Technologies</h1>
-      <span>Catálogo dinámico y accesorios</span>
+    <div class="header-inner">
+        <div class="logo-title">
+            <h1>Trifusion Technologies</h1>
+        </div>
+        <div class="header-contact">
+            📍 Santo Domingo<br>
+            WhatsApp: +1 (829) 872-5163
+        </div>
     </div>
-    <div class="header-contact">
-      📍 Santo Domingo<br>
-      WhatsApp: <strong>+1 (829) 872-5163</strong>
-    </div>
-  </div>
 </header>
 
-<!-- TOOLBAR SUPERIOR -->
+<!-- TOOLBAR -->
 <div class="toolbar">
-  <!-- Buscador de productos -->
-  <div class="panel">
-    <div class="panel-title">Buscador de productos</div>
-    <div class="field-row">
-      <input id="buscadorProductos" type="text" placeholder="Escribe parte del nombre o descripción...">
-      <button id="btnLimpiarBusqueda" class="secondary">Limpiar</button>
-    </div>
-  </div>
 
-  <!-- Login admin TELEFONO -->
-  <div class="panel">
-    <div class="panel-title">Modo edición de precios</div>
-    <div class="field-row">
-      <button id="btnLogin">Entrar</button>
-      <button id="btnLogout" class="secondary">Salir</button>
+    <!-- Buscador -->
+    <div class="panel">
+        <div class="panel-title">Buscar artículos</div>
+        <input id="buscadorProductos" type="text" placeholder="Escribe el modelo o parte del nombre...">
     </div>
-    <div class="admin-status">
-      Estado: <span id="estadoAdmin" class="off">Solo lectura</span>
-      <div style="margin-top:4px;">Usuario permitido: <strong>TRIFUSION</strong> (configurado en el código)</div>
+
+    <!-- Acceso admin (solo muestra ENTRAR) -->
+    <div class="panel">
+        <div class="panel-title">Acceso</div>
+        <button id="btnLogin">Entrar</button>
+        <button id="btnLogout" style="display:none;">Salir</button>
     </div>
-  </div>
+
 </div>
 
 <!-- CATÁLOGO -->
 <div class="catalogo-wrapper">
-  <div id="catalogo" class="catalogo"></div>
-  <div id="mensajeVacio" class="empty" style="display:none;">No se encontraron artículos para ese filtro.</div>
+    <div id="catalogo" class="catalogo"></div>
+    <div id="mensajeVacio" style="display:none;">No se encontraron productos.</div>
 </div>
 
-<!-- PANEL IMÁGENES / PÁGINA OFICIAL -->
-<div class="imagenes-panel">
-  <div class="panel">
-    <div class="panel-title">Buscar imágenes y página oficial del artículo</div>
-    <div class="field-row" style="margin-bottom:6px;">
-      <input id="buscadorImagenes" type="text" placeholder="Ej: GALAXY A17 256GB">
-      <button id="btnBuscarImagenes">Buscar</button>
-    </div>
-    <div class="links-busqueda">
-      <a id="linkGoogleImagenes" href="#" target="_blank" rel="noopener">Ver imágenes en Google</a>
-      <a id="linkGoogleWeb" href="#" target="_blank" rel="noopener">Buscar página oficial / web</a>
-    </div>
-    <div class="iframe-box">
-      <!-- OJO: Google puede bloquear el iframe, pero el link siempre funciona -->
-      <iframe id="iframeImagenes" src="about:blank"></iframe>
-    </div>
-  </div>
-</div>
-
-<!-- PapaParse -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <script>
-const SHEET_ID = "1EtOwxNRGq0WFgGaRXtJgibUqzxIgcAUeRkJlr1wPsLc";
-const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
-
-// Usuario admin
+// =========================
+// CONFIG PRIVADA DEL CÓDIGO
+// =========================
 const ADMIN_USER = "TELEFONO";
-const ADMIN_PASS = "1234"; // cámbialo si quieres
+const ADMIN_PASS = "1234"; // contraseña
+const SHEET_ID = "1EtOwxNRGq0WFgGaRXtJgibUqzxIgcAUeRkJlr1wPsLc";
 
 let esAdmin = false;
-let productos = []; // { descripcion, basePrecio, esTransito }
+let productos = [];
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
 
-function formatearPrecio(num) {
+function formatearPrecio(num){
     return "$" + num.toLocaleString("es-DO");
 }
 
-function construirProductos(data){
+function cargarLista(data){
     productos = [];
-    data.forEach(fila => {
-        const desc = (fila[2] || "").toString().trim(); // C
-        const precioRaw = (fila[3] || "").toString().trim(); // D
 
-        // ignorar filas sin descripción
-        if (!desc) return;
+    data.forEach(fila=>{
+        const desc = (fila[2]||"").trim();
+        const precioRaw = (fila[3]||"").trim();
+        if (!desc || !precioRaw) return;
 
         let esTransito = false;
         let base = null;
 
-        if (!precioRaw) {
-            // sin precio -> lo ignoramos como artículo
-            return;
-        }
-
-        const upper = precioRaw.toUpperCase();
-
-        if (upper.includes("TRANSITO") || upper.includes("TRÁNSITO")) {
+        if (precioRaw.toUpperCase().includes("TRANSITO")) {
             esTransito = true;
         } else {
-            let soloNumeros = precioRaw.replace(/[^0-9]/g, "");
-            if (soloNumeros) {
-                base = parseFloat(soloNumeros);
-                if (isNaN(base)) base = null;
-            }
+            let soloNum = precioRaw.replace(/[^0-9]/g,"");
+            base = parseFloat(soloNum) || null;
         }
 
         productos.push({
@@ -460,158 +262,108 @@ function construirProductos(data){
     });
 }
 
-function renderProductos(filtroTexto = ""){
-    const contenedor = document.getElementById("catalogo");
-    const msgVacio = document.getElementById("mensajeVacio");
-    contenedor.innerHTML = "";
+function renderProductos(filtro=""){
+    const cont = document.getElementById("catalogo");
+    const vacio = document.getElementById("mensajeVacio");
 
-    const texto = filtroTexto.trim().toLowerCase();
+    cont.innerHTML = "";
+    const f = filtro.trim().toLowerCase();
 
-    const lista = productos.filter(p =>
-        !texto || p.descripcion.toLowerCase().includes(texto)
-    );
+    const lista = productos.filter(p=>!f || p.descripcion.toLowerCase().includes(f));
 
-    if (lista.length === 0){
-        msgVacio.style.display = "block";
-        return;
-    } else {
-        msgVacio.style.display = "none";
-    }
+    vacio.style.display = lista.length === 0 ? "block" : "none";
 
-    lista.forEach((p, idx) => {
-        let etiquetaPrecio = "";
-        let clasePrecio = "";
-        let detalleBase = "";
+    lista.forEach((p,idx)=>{
+        let final = "";
+        let clase = "";
 
-        if (p.esTransito){
-            etiquetaPrecio = "TRÁNSITO";
-            clasePrecio = "transito";
-        } else if (p.basePrecio && !isNaN(p.basePrecio)) {
-            const finalCon20 = Math.round(p.basePrecio * 1.20);
-            etiquetaPrecio = formatearPrecio(finalCon20);
-            detalleBase = "Base: " + formatearPrecio(p.basePrecio);
+        if(p.esTransito){
+            final = "TRÁNSITO";
+            clase = "transito";
+        } else if(p.basePrecio){
+            final = formatearPrecio(Math.round(p.basePrecio*1.20));
         } else {
-            etiquetaPrecio = "PRECIO";
-            clasePrecio = "transito";
+            final = "SIN PRECIO";
+            clase = "transito";
         }
-
-        const editorHTML = (esAdmin && !p.esTransito) ? `
-            <div class="editor-precio">
-                <label>Base RD$:</label>
-                <input type="number" min="0" step="1" value="${p.basePrecio || ""}" data-idx="${idx}" class="input-precio">
-                <button type="button" class="btn-guardar" data-idx="${idx}">Aplicar</button>
-            </div>
-        ` : "";
-
-        const badge = esAdmin ? `<div class="badge-admin">Edición activa</div>` : "";
 
         const card = document.createElement("div");
         card.className = "producto";
-        card.innerHTML = `
-            <div class="producto-left">
-                <div class="descripcion">${p.descripcion}</div>
-                <div class="meta">${detalleBase}</div>
+
+        // EDITOR SOLO SI ADMIN
+        const editor = esAdmin && !p.esTransito ? `
+            <div class="editor-precio">
+                <input type="number" value="${p.basePrecio||""}" min="0" data-idx="${idx}" class="input-precio">
+                <button data-idx="${idx}" class="btn-aplicar">OK</button>
             </div>
+        ` : "";
+
+        card.innerHTML = `
+            <div class="descripcion">${p.descripcion}</div>
             <div class="producto-right">
-                ${badge}
-                <div class="precio ${clasePrecio}">${etiquetaPrecio}</div>
-                ${editorHTML}
+                <div class="precio ${clase}">${final}</div>
+                ${editor}
             </div>
         `;
-        contenedor.appendChild(card);
+
+        cont.appendChild(card);
     });
 }
 
 async function cargarCatalogo(){
     const resp = await fetch(CSV_URL);
     const csv = await resp.text();
-    Papa.parse(csv, {
+    Papa.parse(csv,{
         header:false,
         skipEmptyLines:true,
-        complete: function(res){
-            construirProductos(res.data);
+        complete:(res)=>{
+            cargarLista(res.data);
             renderProductos();
         }
     });
 }
 
-// Buscador de productos
-document.getElementById("buscadorProductos").addEventListener("input", (e)=>{
+// Buscar
+document.getElementById("buscadorProductos").addEventListener("input", e=>{
     renderProductos(e.target.value);
 });
-document.getElementById("btnLimpiarBusqueda").addEventListener("click", ()=>{
-    const inp = document.getElementById("buscadorProductos");
-    inp.value = "";
-    renderProductos("");
-});
 
-// Login / logout admin
-function actualizarEstadoAdmin(){
-    const span = document.getElementById("estadoAdmin");
-    if (esAdmin){
-        span.textContent = "Modo edición activo";
-        span.className = "on";
-    } else {
-        span.textContent = "Solo lectura";
-        span.className = "off";
-    }
-    renderProductos(document.getElementById("buscadorProductos").value);
-}
-
+// Login
 document.getElementById("btnLogin").addEventListener("click", ()=>{
-    const user = prompt("Usuario:");
-    if (!user) return;
-    const pass = prompt("Contraseña (configurada en el código):");
-    if (user === ADMIN_USER && pass === ADMIN_PASS){
+    const u = prompt("Usuario:");
+    if(!u) return;
+    const p = prompt("Contraseña:");
+
+    if(u===ADMIN_USER && p===ADMIN_PASS){
         esAdmin = true;
-        actualizarEstadoAdmin();
-        alert("Sesión iniciada como TELEFONO. Ahora puedes editar precios base.");
+        document.getElementById("btnLogout").style.display="inline-block";
+        alert("Modo edición activado");
+        renderProductos(document.getElementById("buscadorProductos").value);
     } else {
-        alert("Credenciales incorrectas.");
+        alert("Acceso denegado");
     }
 });
 
+// Logout
 document.getElementById("btnLogout").addEventListener("click", ()=>{
     esAdmin = false;
-    actualizarEstadoAdmin();
+    document.getElementById("btnLogout").style.display="none";
+    renderProductos(document.getElementById("buscadorProductos").value);
 });
 
-// Delegar eventos para guardar precios editados
-document.getElementById("catalogo").addEventListener("click", (e)=>{
-    if (e.target.classList.contains("btn-guardar")){
-        const idx = parseInt(e.target.dataset.idx,10);
+// Guardar precio
+document.getElementById("catalogo").addEventListener("click", e=>{
+    if(e.target.classList.contains("btn-aplicar")){
+        const idx = e.target.dataset.idx;
         const input = document.querySelector(`.input-precio[data-idx="${idx}"]`);
-        if (!input) return;
-        const value = parseFloat(input.value);
-        if (isNaN(value) || value <= 0){
-            alert("Introduce un precio base válido.");
-            return;
-        }
-        productos[idx].basePrecio = value;
+        const val = parseFloat(input.value);
+        if(!val){ alert("Precio inválido"); return;}
+        productos[idx].basePrecio = val;
         renderProductos(document.getElementById("buscadorProductos").value);
     }
 });
 
-// Buscador de imágenes / página oficial
-document.getElementById("btnBuscarImagenes").addEventListener("click", ()=>{
-    const q = document.getElementById("buscadorImagenes").value.trim();
-    if (!q) return;
-    const encoded = encodeURIComponent(q);
-
-    const urlImgs = `https://www.google.com/search?tbm=isch&q=${encoded}`;
-    const urlWeb  = `https://www.google.com/search?q=${encoded}`;
-
-    document.getElementById("linkGoogleImagenes").href = urlImgs;
-    document.getElementById("linkGoogleWeb").href = urlWeb;
-
-    // Intento de previsualizar imágenes dentro de la página.
-    // Nota: Google a veces bloquea iframes; si no carga, usa los links de arriba.
-    document.getElementById("iframeImagenes").src = urlImgs;
-});
-
-// Cargar datos al inicio
 cargarCatalogo();
-actualizarEstadoAdmin();
 </script>
 
 </body>
